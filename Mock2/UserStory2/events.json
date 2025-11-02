@@ -1,0 +1,6 @@
+[
+  { "id": 1, "name": "Music Festival", "category": "Music", "date": "2025-12-05" },
+  { "id": 2, "name": "Tech Conference", "category": "Technology", "date": "2025-11-20" },
+  { "id": 3, "name": "Startup Meetup", "category": "Business", "date": "2025-10-15" },
+  { "id": 4, "name": "Art Exhibition", "category": "Art", "date": "2025-09-25" }
+]
