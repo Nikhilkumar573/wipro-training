@@ -1,0 +1,7 @@
+{
+  "books": [
+    { "id": 1, "title": "Atomic Habits", "author": "James Clear", "price": 499, "description": "A guide to building good habits." },
+    { "id": 2, "title": "Ikigai", "author": "Héctor García", "price": 399, "description": "Finding purpose and meaning in life." },
+    { "id": 3, "title": "Deep Work", "author": "Cal Newport", "price": 450, "description": "Rules for focused success in a distracted world." }
+  ]
+}
