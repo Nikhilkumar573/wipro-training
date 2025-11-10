@@ -2,8 +2,8 @@
   "_id": {
     "$oid": "6907a59e5570d2c26fdde9dc"
   },
-  "name": "vishu",
-  "email": "vishu@example.com",
+  "name": "nikhil",
+  "email": "nikhil@example.com",
   "joinDate": {
     "$date": "2023-06-15T00:00:00.000Z"
   }
@@ -12,8 +12,8 @@
   "_id": {
     "$oid": "6907a59e5570d2c26fdde9dd"
   },
-  "name": "yash",
-  "email": "yash@example.com",
+  "name": "suman",
+  "email": "suman@example.com",
   "joinDate": {
     "$date": "2024-01-10T00:00:00.000Z"
   }
@@ -22,8 +22,8 @@
   "_id": {
     "$oid": "6907a59e5570d2c26fdde9de"
   },
-  "name": "harsh",
-  "email": "harsh@example.com",
+  "name": "shaswat",
+  "email": "shaswat@example.com",
   "joinDate": {
     "$date": "2024-09-05T00:00:00.000Z"
   }
