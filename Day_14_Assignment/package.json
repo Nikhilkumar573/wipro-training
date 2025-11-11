@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "bootstrap": "^5.3.8",
+    "framer-motion": "^12.23.24"
+  }
+}
