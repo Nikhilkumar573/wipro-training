@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Spring Flowers School</title>
+
+  <!-- Internal CSS -->
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f9f9f9;
+      color: #333;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: #4caf50;
+      padding: 10px 40px;
+      color: white;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+    }
+
+    .logo img {
+      height: 60px;
+      margin-right: 15px;
+      border-radius: 50%;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 25px;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+    }
+
+    section {
+      padding: 40px;
+      text-align: center;
+    }
+
+    #welcomeSection {
+      background-color: #e8f5e9;
+      border-radius: 10px;
+      width: 80%;
+      margin: 30px auto;
+    }
+
+    #studentSelect {
+      margin: 20px;
+      padding: 8px;
+      font-size: 16px;
+    }
+
+    .profile-card {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: white;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      border-radius: 10px;
+      padding: 25px;
+      width: 60%;
+      margin: 20px auto;
+    }
+
+    .profile-card img {
+      height: 100px;
+      border-radius: 50%;
+      margin-right: 25px;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    footer {
+      background-color: #4caf50;
+      color: white;
+      text-align: center;
+      padding: 10px;
+      position: fixed;
+      width: 100%;
+      bottom: 0;
+    }
+  </style>
+</head>
+<body>
+  <!-- Header Section -->
+  <header>
+    <div class="logo">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/4/47/School_emblem_example.png" alt="School Logo">
+      <h1>Spring Flowers School</h1>
+    </div>
+    <nav>
+      <ul>
+        <li><a href="#" id="homeBtn">Home</a></li>
+        <li><a href="#" id="profileBtn">Student Profile</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Welcome Section -->
+  <section id="welcomeSection">
+    <h2>Welcome to Spring Flowers School 🌸</h2>
+    <p>Where learning blooms every day! Click “Student Profile” to view your details.</p>
+  </section>
+
+  <!-- Profile Section -->
+  <section id="profileSection" class="hidden">
+    <h2>Student Profile</h2>
+
+    <select id="studentSelect">
+      <option value="">Select a student</option>
+      <option value="1">Nikhil Singh</option>
+      <option value="2">Priya Sharma</option>
+      <option value="3">Rohan Verma</option>
+    </select>
+
+    <div id="profileContainer" class="profile-card hidden">
+      <img id="studentPhoto" src="" alt="Student Photo">
+      <div class="info">
+        <p><strong>Name:</strong> <span id="studentName"></span></p>
+        <p><strong>Class:</strong> <span id="studentClass"></span></p>
+        <p><strong>Roll No:</strong> <span id="studentRoll"></span></p>
+        <p><strong>Email:</strong> <span id="studentEmail"></span></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>© 2025 Spring Flowers School | Designed by Students</p>
+  </footer>
+
+  <!-- JavaScript -->
+  <script>
+    const profileBtn = document.getElementById('profileBtn');
+    const homeBtn = document.getElementById('homeBtn');
+    const welcomeSection = document.getElementById('welcomeSection');
+    const profileSection = document.getElementById('profileSection');
+    const studentSelect = document.getElementById('studentSelect');
+    const profileContainer = document.getElementById('profileContainer');
+
+    const students = {
+      1: {
+        name: "Nikhil Singh",
+        class: "10th Grade",
+        roll: 25,
+        email: "nikhil@example.com",
+        photo: "https://cdn-icons-png.flaticon.com/512/3135/3135715.png"
+      },
+      2: {
+        name: "Priya Sharma",
+        class: "9th Grade",
+        roll: 14,
+        email: "priya@example.com",
+        photo: "https://cdn-icons-png.flaticon.com/512/2922/2922561.png"
+      },
+      3: {
+        name: "Rohan Verma",
+        class: "11th Grade",
+        roll: 32,
+        email: "rohan@example.com",
+        photo: "https://cdn-icons-png.flaticon.com/512/236/236832.png"
+      }
+    };
+
+    // Switch between sections
+    profileBtn.addEventListener('click', () => {
+      welcomeSection.classList.add('hidden');
+      profileSection.classList.remove('hidden');
+    });
+
+    homeBtn.addEventListener('click', () => {
+      profileSection.classList.add('hidden');
+      welcomeSection.classList.remove('hidden');
+    });
+
+    // Handle profile selection
+    studentSelect.addEventListener('change', () => {
+      const selected = students[studentSelect.value];
+      if (selected) {
+        document.getElementById('studentPhoto').src = selected.photo;
+        document.getElementById('studentName').textContent = selected.name;
+        document.getElementById('studentClass').textContent = selected.class;
+        document.getElementById('studentRoll').textContent = selected.roll;
+        document.getElementById('studentEmail').textContent = selected.email;
+        profileContainer.classList.remove('hidden');
+      } else {
+        profileContainer.classList.add('hidden');
+      }
+    });
+  </script>
+</body>
+</html>
