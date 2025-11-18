@@ -1,0 +1,31 @@
+.package-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border-radius: 15px;
+}
+
+.package-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+}
+
+body {
+  background-image: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb');
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: center;
+}
+
+main.container {
+  background: rgba(255,255,255,0.85);
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.btn {
+  border-radius: 25px;
+  font-weight: 600;
+}
+
+.btn-warning {
+  background: linear-gradient(45deg, #ffaa00, #ff7700);
+}

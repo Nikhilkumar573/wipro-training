@@ -1,0 +1,36 @@
+{
+  "packages": [
+    {
+      "id": 1,
+      "name": "Goa Beach Escape",
+      "description": "Enjoy a perfect tropical vacation with water sports & nightlife.",
+      "price": 12000,
+      "rating": 4.5,
+      "image": "https://images.unsplash.com/photo-1581873372796-635b7a0c003f?auto=format&fit=crop&w=900&q=60"
+    },
+    {
+      "id": 2,
+      "name": "Manali Snow Adventure",
+      "description": "Snow mountains, snowfall views, trekking and paragliding.",
+      "price": 18000,
+      "rating": 4.7,
+      "image": "https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.thrillophilia.com%2Ftours%2Fskiing-in-manali&psig=AOvVaw2HLFLT8Xg2-34rZPMr6f0g&ust=1763439978220000&source=images&cd=vfe&opi=89978449&ved=0CBUQjRxqFwoTCNCTsf-r-JADFQAAAAAdAAAAABAE" 
+      },
+    {
+      "id": 3,
+      "name": "Dubai Luxury Tour",
+      "description": "Burj Khalifa, Ferrari World, Desert Safari & more.",
+      "price": 55000,
+      "rating": 4.8,
+      "image": "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=900&q=60"
+    },
+    {
+      "id": 4,
+      "name": "Kerala Backwaters",
+      "description": "Relax on a houseboat surrounded by nature and greenery.",
+      "price": 22000,
+      "rating": 4.4,
+      "image": "https://images.unsplash.com/photo-1600695342273-4a043bbf746f?auto=format&fit=crop&w=900&q=60"
+    }
+  ]
+}
