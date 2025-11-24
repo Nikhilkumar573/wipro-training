@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Day 24 – Upload & Real-Time Chat</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 20px; }
+    #chat { border: 1px solid #ccc; height: 250px; padding: 10px; overflow-y: auto; margin-bottom: 10px; }
+    .system { color: gray; font-style: italic; }
+    .admin { color: darkred; font-weight: bold; }
+    .guest { color: darkblue; }
+  </style>
+</head>
+<body>
+  <h1>Day 24 – File Upload & Real-Time Chat</h1>
+
+  <!-- USER ROLE SECTION -->
+  <h2>1. Join Chat as Guest or Admin</h2>
+  <label>Name: <input id="username" placeholder="Enter your name" /></label>
+  <label>
+    Role:
+    <select id="role">
+      <option value="guest">Guest</option>
+      <option value="admin">Admin</option>
+    </select>
+  </label>
+  <button id="joinBtn">Join Chat</button>
+
+  <div id="chatSection" style="display:none;">
+    <h3>Chat</h3>
+    <div id="chat"></div>
+    <input id="messageInput" placeholder="Type a message..." />
+    <button id="sendBtn">Send</button>
+  </div>
+
+  <hr />
+
+  <!-- FILE UPLOAD SECTION -->
+  <h2>2. Upload Course Material (PDF)</h2>
+  <form id="uploadForm">
+    <input type="file" name="file" id="fileInput" accept="application/pdf" />
+    <button type="submit">Upload PDF</button>
+  </form>
+
+  <p id="uploadResult"></p>
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script>
+    let socket = null;
+
+    const joinBtn = document.getElementById("joinBtn");
+    const chatSection = document.getElementById("chatSection");
+    const chatDiv = document.getElementById("chat");
+    const sendBtn = document.getElementById("sendBtn");
+    const msgInput = document.getElementById("messageInput");
+
+    joinBtn.onclick = function () {
+      const username = document.getElementById("username").value.trim() || "Guest";
+      const role = document.getElementById("role").value;
+
+      // connect socket with role + username
+      socket = io({
+        query: { username, role }
+      });
+
+      chatSection.style.display = "block";
+
+      socket.on("chatMessage", (msg) => {
+        const p = document.createElement("p");
+        if (msg.role === "system") {
+          p.classList.add("system");
+          p.textContent = msg.text;
+        } else {
+          p.classList.add(msg.role === "admin" ? "admin" : "guest");
+          p.textContent = `[${msg.role.toUpperCase()}] ${msg.from}: ${msg.text}`;
+        }
+        chatDiv.appendChild(p);
+        chatDiv.scrollTop = chatDiv.scrollHeight;
+      });
+
+      sendBtn.onclick = function () {
+        const text = msgInput.value.trim();
+        if (!text) return;
+        socket.emit("chatMessage", text);
+        msgInput.value = "";
+      };
+    };
+
+    // FILE UPLOAD LOGIC
+    const uploadForm = document.getElementById("uploadForm");
+    const uploadResult = document.getElementById("uploadResult");
+
+    uploadForm.onsubmit = async function (e) {
+      e.preventDefault();
+
+      const fileInput = document.getElementById("fileInput");
+      if (!fileInput.files[0]) {
+        uploadResult.textContent = "Please select a PDF file first.";
+        return;
+      }
+
+      const formData = new FormData();
+      formData.append("file", fileInput.files[0]);
+
+      try {
+        const res = await fetch("/upload", {
+          method: "POST",
+          body: formData
+        });
+
+        const text = await res.text();
+        uploadResult.textContent = text;
+      } catch (err) {
+        console.error(err);
+        uploadResult.textContent = "Error uploading file.";
+      }
+    };
+  </script>
+</body>
+</html>
